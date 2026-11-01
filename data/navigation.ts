@@ -1,25 +1,20 @@
 import type { NavigationItem, NavigationLink } from "@/types/navigation";
+import { featuredCourses } from "@/data/courses";
 
 export const navigation: NavigationItem[] = [
-  { label: "Programs", triggerOnly: true, children: [
-    { label: "Hifz-ul-Quran", href: "/programs/hifz-ul-quran", description: "Two-year memorisation, revision and Tajweed pathway" },
-    { label: "Nazra Quran", href: "/programs/nazra-quran", description: "Quran reading, Tajweed and Makharij" },
-    { label: "Tajweed", href: "/programs/tajweed", description: "Correct pronunciation and Quran recitation" },
-    { label: "Islamic Studies", href: "/programs/islamic-studies", description: "Eight-year Aalim-e-Deen course" },
-    { label: "Full-Time Program", href: "/programs/full-time-program", description: "Structured full-day Quranic learning" },
-    { label: "Part-Time Program", href: "/programs/part-time-program", description: "Nazira Quran alongside regular education" },
+  { label: "Home", href: "/" },
+  { label: "Courses", triggerOnly: true, children: [
+    ...featuredCourses.map(course => ({ label: course.title, href: course.href!, description: course.description })),
   ] },
-  { label: "Academics", triggerOnly: true, children: [
-    { label: "Admission", href: "/academics/admission", description: "Admission information" },
-    { label: "Class Schedule", href: "/academics/class-schedule", description: "Class times and availability" },
+  { label: "Fee & Schedule", href: "/pricing" },
+  { label: "About", triggerOnly: true, children: [
+    { label: "About Al Badar", href: "/about", description: "Explore our Quran learning approach." },
+    { label: "Our Teachers", href: "/about#teachers", description: "Explore how teachers guide learners." },
+    { label: "Blogs", href: "/blog", description: "Browse Quran learning articles as they appear." },
+    { label: "Career", href: "/about/career", description: "Explore career information and enquiries." },
+    { label: "FAQ's", href: "/faqs", description: "Find answers to common questions." },
   ] },
-  { label: "About Us", href: "/about" },
-  { label: "More", triggerOnly: true, children: [
-    { label: "Blogs", href: "/blog", description: "Articles and updates" },
-    { label: "Career", href: "/about/career", description: "Career opportunities" },
-    { label: "FAQ's", href: "/faqs", description: "Frequently asked questions" },
-  ] },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const policyLinks: NavigationLink[] = [

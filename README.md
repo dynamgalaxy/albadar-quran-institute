@@ -1,6 +1,6 @@
-# Al Zikra Islamic Center website
+# Al Badar Quran Institute website
 
-A seven-page Next.js App Router site using the supplied Al Zikra brown and white logos. Page composition remains in `app/`; reusable layouts, sections, cards and controls remain in `components/`; editable content remains in `data/`.
+A Next.js App Router website using the existing copied site template and Al Badar Quran Institute content. Page composition remains in `app/`; reusable layouts, sections, cards and controls remain in `components/`; editable content remains in `data/`.
 
 ## Routes
 

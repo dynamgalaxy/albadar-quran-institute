@@ -15,7 +15,7 @@ export const site = {
   shortName: company.shortName,
   defaultTitle: company.name,
   description: company.description,
-  url: getSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
+  url: getSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? "https://al-badar-website.am1159107.workers.dev"),
   navigation,
   phone: company.phone,
   email: company.email,

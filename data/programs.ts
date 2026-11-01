@@ -1,16 +1,14 @@
 import type { Program } from "@/types/program";
-
 export const programs: Program[] = [
-  { id: "nazira", title: "Nazira", description: "Quran reading with Tajweed and Makharij. Non-residential classes run 3:00 PM–5:00 PM; Sunday holiday.", href: "/programs/nazra-quran", status: "ongoing" },
-  { id: "hifz", title: "Hifz", description: "A focused two-year, non-residential Hifz-e-Quran pathway with revision, Tajweed and character development. 7:00 AM–5:00 PM.", href: "/programs/hifz-ul-quran", status: "ongoing" },
-  { id: "huffaz-education", title: "Huffaz Education System", description: "For students who have completed Hifz: Matriculation preparation, English language and speaking, computer skills, debate and confidence building.", status: "to-be-confirmed" },
-  { id: "seerat-ul-nabi", title: "Seerat Ul Nabi S.A.W.W", description: "Study of the Prophet's life. Format and session dates will be confirmed.", status: "to-be-confirmed" },
-  { id: "dars-e-nizami", title: "Dars e Nizami", description: "An eight-year Islamic Studies / Aalim-e-Deen course covering Quran, Hadith, Fiqh, Arabic and contemporary skills.", href: "/programs/islamic-studies", status: "ongoing" },
-  { id: "english-urdu", title: "English & Urdu Language", description: "English and Urdu language learning. Levels and schedules will be confirmed.", status: "to-be-confirmed" },
+  { id: "noorani-qaida", title: "Noorani Qaida", description: "Learn the basics of Quran reading from the very beginning.", href: "/courses/noorani-qaida", status: "ongoing" },
+  { id: "quran-reading", title: "Quran Reading / Nazra Quran", description: "Learn to read the Holy Quran correctly and fluently.", href: "/courses/quran-reading", status: "ongoing" },
+  { id: "tajweed", title: "Quran with Tajweed", description: "Learn how to recite the Holy Quran according to the rules of Tajweed.", href: "/courses/quran-with-tajweed", status: "ongoing" },
+  { id: "hifz", title: "Hifz-ul-Quran", description: "A structured Quran memorization programme for students who want to memorize the Holy Quran.", href: "/courses/hifz-ul-quran", status: "ongoing" },
+  { id: "islamic-studies", title: "Basic Islamic Studies", description: "Learn essential Islamic knowledge for everyday life.", href: "/courses/basic-islamic-studies", status: "ongoing" },
+  { id: "kids-islamic-studies", title: "Islamic Studies for Kids", description: "An age-appropriate Islamic education programme designed especially for children.", href: "/courses/islamic-studies-for-kids", status: "ongoing" },
 ];
-
 export const startSteps = [
-  { id: "explore", title: "Explore", description: "Compare the Hifz, Nazira and Islamic Studies pathways" },
-  { id: "enquire", title: "Enquire", description: "Ask about programme eligibility and seat availability" },
-  { id: "begin", title: "Get started", description: "Complete the assessment for a suitable programme" },
+  { id: "explore", title: "Explore", description: "Find a course for the learner’s level and goals." },
+  { id: "enquire", title: "Enquire", description: "Ask about a suitable starting point and lessons." },
+  { id: "begin", title: "Get started", description: "Book a free trial and meet a teacher." },
 ] as const;

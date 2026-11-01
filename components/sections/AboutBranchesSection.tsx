@@ -9,20 +9,20 @@ export default function AboutBranchesSection({ campuses }: { campuses: Campus[] 
   return <section className={`section ${styles.section}`} aria-labelledby="about-branches-title">
     <div className="container">
       <div className={styles.heading}>
-        <span className="eyebrow">Our locations</span>
-        <h2 id="about-branches-title">Our Four <em>Branches</em></h2>
-        <p>Al Zikra Islamic Center has campuses in Rawalpindi and Islamabad. Find the location that suits your family.</p>
+        <span className="eyebrow">Online classes</span>
+        <h2 id="about-branches-title">Learn from <em>Home</em></h2>
+        <p>One-to-one online Quran and Islamic studies with flexible scheduling.</p>
       </div>
       <div className={styles.grid}>
         {campuses.map((campus, index) => <article className={styles.card} key={campus.id}>
           <div className={styles.cardHead}>
-            <span className={styles.tag}>Branch {String(index + 1).padStart(2, "0")}</span>
+            <span className={styles.tag}>Learning option {String(index + 1).padStart(2, "0")}</span>
             <h3>{campus.title}</h3>
-            <span className={styles.city}>{campus.address?.includes("Islamabad") ? "Islamabad" : "Rawalpindi"}, Pakistan</span>
+            <span className={styles.city}>Al Badar Quran Institute</span>
           </div>
           <div className={styles.cardBody}>
             <span className={styles.icon}><LocationIcon /></span>
-            <div><span className={styles.label}>Location</span><p>{campus.address}</p></div>
+            <div><span className={styles.label}>Details</span><p>{campus.address}</p></div>
           </div>
         </article>)}
       </div>

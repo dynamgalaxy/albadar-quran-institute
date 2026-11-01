@@ -4,40 +4,59 @@ import { notFound } from "next/navigation";
 import Container from "@/components/common/Container";
 import PageHero from "@/components/common/PageHero";
 import ProgramDetailSections from "@/components/sections/ProgramDetailSections";
-import AdmissionRequirementsSection from "@/components/sections/AdmissionRequirementsSection";
-import ProgrammeSchedulesSection from "@/components/sections/ProgrammeSchedulesSection";
-import CareerOpenings from "@/components/sections/CareerOpenings";
 import GridSection from "@/components/sections/GridSection";
 import Card from "@/components/common/Card";
 import type { ContentItem } from "@/types/common";
 import { navigation, policyLinks } from "@/data/navigation";
+import type { NavigationLink } from "@/types/navigation";
+import { programDetails } from "@/data/programDetails";
 import { pageHeroImage } from "@/data/pages";
+import { courses } from "@/data/courses";
+import { createMetadata } from "@/lib/seo";
 
-const entries = [...navigation.flatMap(item => item.children ?? []), ...policyLinks].filter(item => item.href.split("/").length === 3);
+const preservedRoutes: NavigationLink[] = [
+  { label: "Free Trial", href: "/academics/admission" },
+  { label: "Class Timings", href: "/academics/class-schedule" },
+  { label: "Course information", href: "/programs/full-time-program" },
+  { label: "Course information", href: "/programs/part-time-program" },
+  { label: "Quran Reading / Nazra Quran", href: "/programs/nazra-quran" },
+  { label: "Quran with Tajweed", href: "/programs/tajweed" },
+  { label: "Hifz-ul-Quran", href: "/programs/hifz-ul-quran" },
+  { label: "Basic Islamic Studies", href: "/programs/islamic-studies" },
+];
+const courseEntries: NavigationLink[] = courses.flatMap(course => course.href ? [{ label: course.title, href: course.href, description: course.description }] : []);
+const candidates = [...courseEntries, ...navigation.flatMap(item => item.children ?? []), ...policyLinks, ...preservedRoutes];
+const entries = [...new Map(candidates.filter(item => item.href.split("/")[1] !== "contact" && item.href.split("/").length === 3).map(item => [item.href, item] as const)).values()];
+const legacyCourseSlugs: Record<string, string> = {
+  "nazra-quran": "quran-reading",
+  tajweed: "quran-with-tajweed",
+  "hifz-ul-quran": "hifz-ul-quran",
+  "islamic-studies": "basic-islamic-studies",
+};
 
 const existingPageCopy: Record<string, { hero: string; title?: string; description?: string; cards?: ContentItem[]; body?: string }> = {
   "/academics/admission": {
-    hero: "Find the right programme for your child. Admission depends on educational background, Quran reading ability, readiness, assessment and available seats.",
-    title: "Admission requirements",
-    description: "Entry criteria vary by programme. Contact the centre to discuss assessment and available seats.",
+    hero: "Start with a free trial class and discuss the student's current learning level and course.",
+    title: "Getting Started",
+    description: "New students can attend a free trial class before choosing a course and schedule.",
     cards: [
-      { id: "hifz", title: "Hifz-e-Quran", description: "Primary education, Quran reading and Tajweed familiarity. Programme ages: 11–12+; general guidance: boys around 12–13. Final eligibility follows assessment." },
-      { id: "nazira", title: "Nazira-e-Quran", description: "Ages 10–11+ and Primary education. Develop Quran reading, pronunciation and Tajweed; the centre confirms readiness through admission assessment." },
-      { id: "islamic-studies", title: "Islamic Studies", description: "Completed Hifz and Middle education required. Minimum age is stated as 14–15 years, with basic Arabic reading, writing and speaking." },
-      { id: "huffaz", title: "Huffaz Education System", description: "Completed Hifz and Primary education required. Applicants must be 14 or younger and have a basic understanding of English for this pathway." },
-      { id: "assessment", title: "Assessment & attendance", description: "Education, Quran reading and readiness are assessed. Admission depends on suitability and available seats; all students return home after classes." },
+      { id: "enquire", title: "Contact the institute", description: "Ask about available courses and class times by WhatsApp, phone or email." },
+      { id: "trial", title: "Attend a free trial", description: "A teacher can understand the student's current Quran learning level." },
+      { id: "choose", title: "Choose a course and schedule", description: "Discuss a suitable course and arrange class times according to availability." },
     ],
   },
   "/academics/class-schedule": {
-    hero: "Review the supplied teaching times for Hifz, Nazira and Islamic Studies. Students return home after classes.",
-    title: "Programme schedules",
-    description: "These are teaching times for the named programmes; Sunday is the weekly holiday. Separate Tajweed and Huffaz Education System timetables have not been supplied.",
+    hero: "Class times are arranged according to the student's and teacher's availability.",
+    title: "Flexible Class Timings",
+    description: "Morning, afternoon, evening and night slots may be available for students in different time zones.",
     cards: [
-      { id: "hifz", title: "Hifz-e-Quran", description: "7:00 AM–5:00 PM. Full-day, non-residential study with memorisation, revision and Tajweed." },
-      { id: "nazira", title: "Nazira-e-Quran", description: "3:00 PM–5:00 PM. Part-time Quran learning alongside regular academic education." },
-      { id: "islamic-studies", title: "Islamic Studies / Aalim-e-Deen", description: "Monday–Saturday, 7:00 AM–5:00 PM. Full-day, non-residential study. Sunday holiday." },
+      { id: "morning", title: "Morning", description: "Before school or work." },
+      { id: "afternoon", title: "Afternoon", description: "A calm midday slot." },
+      { id: "evening", title: "Evening", description: "After school or work." },
+      { id: "night", title: "Night", description: "Later slots for other time zones." },
     ],
   },
+  "/about/career": { hero: "Career details have not been supplied.", body: "Contact Al Badar Quran Institute to ask about current opportunities." },
 };
 
 export function generateStaticParams() {
@@ -50,6 +69,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ group: string; slug: string }> }): Promise<Metadata> {
   const { group, slug } = await params;
   const item = entries.find(entry => entry.href === `/${group}/${slug}`);
+  const detailSlug = group === "courses" ? slug : group === "programs" ? legacyCourseSlugs[slug] : undefined;
+  const detail = detailSlug ? programDetails[detailSlug] : undefined;
+  if (item && detail) return createMetadata({ title: item.label, description: detail.description, path: `/${group}/${slug}` });
   return { title: item?.label ?? "Page not found", robots: { index: false, follow: true } };
 }
 
@@ -58,8 +80,11 @@ export default async function NavigationDetailPage({ params }: { params: Promise
   const item = entries.find(entry => entry.href === `/${group}/${slug}`);
   if (!item) notFound();
   const copy = existingPageCopy[item.href];
+  const detailSlug = group === "courses" ? slug : group === "programs" ? legacyCourseSlugs[slug] : undefined;
+  const course = detailSlug ? programDetails[detailSlug] : undefined;
+  const isCourse = Boolean(course);
   return <>
-    <PageHero eyebrow="Al Zikra Islamic Center" title={item.label} description={copy?.hero ?? (group === "programs" ? item.description : group === "about" && slug === "career" ? "Explore opportunities to contribute to Quran learning and community at Al Zikra." : group === "policies" ? "This policy page is being prepared." : "Confirmed details will be published here when available.")} backgroundImage={{ src: pageHeroImage(slug), alt: "" }} backButton secondaryCTA={{ label: "Contact Us", href: "/contact" }} />
-    {group === "programs" ? <ProgramDetailSections slug={slug} title={item.label} description={item.description ?? "Course details will be confirmed with the centre."} /> : group === "about" && slug === "career" ? <CareerOpenings /> : item.href === "/academics/admission" && copy?.cards ? <AdmissionRequirementsSection items={copy.cards} description={copy.description} /> : item.href === "/academics/class-schedule" && copy?.cards ? <ProgrammeSchedulesSection items={copy.cards} description={copy.description} /> : copy?.cards ? <GridSection title={copy.title ?? item.label} description={copy.description}>{copy.cards.map(card => <Card key={card.id} item={card} />)}</GridSection> : <section className="section"><Container><p>{copy?.body ?? <>For current information, please <Link href="/contact">contact Al Zikra Islamic Center</Link>.</>}</p></Container></section>}
+    <PageHero variant={isCourse ? "course" : undefined} eyebrow={course ? `AL BADAR QURAN INSTITUTE · ${course.level.toUpperCase()}` : "Al Badar Quran Institute"} title={item.label} description={course ? (detailSlug === "noorani-qaida" ? "Start with Arabic letters, their sounds and the foundations of Quran reading." : course.description) : copy?.hero ?? (group === "programs" ? item.description : group === "policies" ? "This page is being prepared." : "Confirmed details will be published here when available.")} backgroundImage={{ src: isCourse ? "/assets/home/images/about-child-quran-laptop.png" : pageHeroImage(slug), alt: isCourse ? "Child reading the Quran beside a laptop" : "" }} backButton={!isCourse} primaryCTA={isCourse ? { label: "Discuss this course", href: "/contact#enquiry" } : undefined} secondaryCTA={isCourse ? { label: "Contact us", href: "/contact" } : { label: "Contact Us", href: "/contact" }} />
+    {isCourse && detailSlug ? <ProgramDetailSections slug={detailSlug} title={item.label} /> : copy?.cards ? <GridSection title={copy.title ?? item.label} description={copy.description}>{copy.cards.map(card => <Card key={card.id} item={card} />)}</GridSection> : <section className="section"><Container><p>{copy?.body ?? (group === "programs" ? <>These course details are not available here. Please browse <Link href="/courses">all courses</Link> or <Link href="/contact">contact Al Badar Quran Institute</Link>.</> : <>For current information, please <Link href="/contact">contact Al Badar Quran Institute</Link>.</>)}</p></Container></section>}
   </>;
 }

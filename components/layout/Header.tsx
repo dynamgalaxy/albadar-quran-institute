@@ -12,6 +12,7 @@ import AnimatedArrow from "@/components/common/AnimatedArrow";
 
 export default function Header() {
   const pathname = usePathname();
+  const coursePage = pathname.startsWith("/courses/");
   const [scrolled, setScrolled] = useState(false);
   const [surface, setSurface] = useState<"dark" | "light">("dark");
   useEffect(() => {
@@ -37,5 +38,5 @@ export default function Header() {
       window.removeEventListener("resize", update);
     };
   }, [pathname]);
-  return <header className={`site-header site-header--home ${scrolled ? "site-header--scrolled" : ""} site-header--on-${surface}`}><Container className="header-inner"><Logo header /><DesktopNav items={site.navigation} /><div className="header-actions"><Button href="/academics/admission">Get Admission <AnimatedArrow /></Button><MobileNav key={pathname} items={site.navigation} /></div></Container></header>;
+  return <header className={`site-header site-header--home ${coursePage ? "site-header--course" : ""} ${scrolled ? "site-header--scrolled" : ""} site-header--on-${surface}`}><Container className="header-inner"><Logo header /><DesktopNav items={site.navigation} /><div className="header-actions"><Button href="/contact#enquiry">Book Free Trial <AnimatedArrow /></Button><MobileNav key={pathname} items={site.navigation} /></div></Container></header>;
 }

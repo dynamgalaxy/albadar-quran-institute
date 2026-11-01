@@ -16,7 +16,7 @@ export default function FAQDirectory({ groups }: { groups: FAQGroup[] }) {
     <div className="faq-directory-heading">
       <p className="footer-faq-eyebrow"><span aria-hidden="true">✦</span> Questions &amp; answers</p>
       <h2 id="faq-directory-title">Find a clear answer</h2>
-      <p>Browse 100 answers about Quran learning, admission, schedules and Al Zikra&apos;s branches.</p>
+      <p>Browse answers about Quran courses, online learning and class timings.</p>
     </div>
     <div className="faq-directory-controls">
       <label>Search questions<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search a topic or question" /></label>

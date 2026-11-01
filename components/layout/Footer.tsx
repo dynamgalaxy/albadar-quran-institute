@@ -4,40 +4,47 @@ import Logo from "@/components/common/Logo";
 import { site } from "@/config/site";
 
 const navigationLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Our Programs", href: "/courses" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Home", href: "/" }, { label: "About Us", href: "/about" },
+  { label: "Courses", href: "/courses" }, { label: "Teachers", href: "/about" },
+  { label: "Pricing", href: "/pricing" }, { label: "Contact Us", href: "/contact" },
 ];
 
 const quickLinks = [
-  { label: "Admission", href: "/academics/admission" },
-  { label: "Class Schedule", href: "/academics/class-schedule" },
-  { label: "Blogs", href: "/blog" },
-  { label: "FAQs", href: "/faqs" },
-  { label: "Sitemap", href: "/sitemap" },
-  { label: "Privacy Policy", href: "/policies/privacy-policy" },
-  { label: "Terms of Use", href: "/policies/terms-of-use" },
+  { label: "Book a free trial", href: "/contact#enquiry" },
+  { label: "Questions & answers", href: "/faqs" },
+  { label: "Contact us", href: "/contact" },
+  { label: "WhatsApp", href: "https://wa.me/923155044602" },
 ];
 
 const programLinks = [
-  { label: "Hifz-ul-Quran", href: "/programs/hifz-ul-quran" },
-  { label: "Nazra Quran", href: "/programs/nazra-quran" },
-  { label: "Tajweed", href: "/programs/tajweed" },
-  { label: "Islamic Studies", href: "/programs/islamic-studies" },
-  { label: "Full-Time Program", href: "/programs/full-time-program" },
-  { label: "Part-Time Program", href: "/programs/part-time-program" },
+  { label: "Noorani Qaida", href: "/courses/noorani-qaida" },
+  { label: "Quran Reading / Nazra Quran", href: "/courses/quran-reading" },
+  { label: "Quran with Tajweed", href: "/courses/quran-with-tajweed" },
+  { label: "Hifz-ul-Quran", href: "/courses/hifz-ul-quran" },
+  { label: "Quran Translation", href: "/courses/quran-translation" },
+  { label: "Quran Tafseer", href: "/courses/quran-tafseer" },
+  { label: "Basic Islamic Studies", href: "/courses/basic-islamic-studies" },
+  { label: "Islamic Studies for Kids", href: "/courses/islamic-studies-for-kids" },
+  { label: "Arabic Language Basics", href: "/courses/arabic-language-basics" },
 ];
 
 export default function Footer() {
   return <footer className="site-footer" data-header-surface="dark"><Container>
     <div className="footer-grid">
-      <div className="footer-brand"><Logo light /><p className="footer-headline">Begin your Quran journey with Al Zikra.</p><a className="footer-email" href={`mailto:${site.email}`}>{site.email}<span aria-hidden="true">↗</span></a></div>
-      <nav className="footer-column" aria-label="Footer navigation"><h2>Navigation</h2><ul className="footer-links">{navigationLinks.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
-      <nav className="footer-column" aria-label="Footer programs"><h2>Programs</h2><ul className="footer-links">{programLinks.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
-      <nav className="footer-column" aria-label="Footer quick links"><h2>Quick Links</h2><ul className="footer-links">{quickLinks.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
+      <div className="footer-brand">
+        <div className="footer-brand-lockup"><Logo light /></div>
+        <p className="footer-headline">Personal online Quran learning for children and adults, taught one-to-one.</p>
+        <div className="footer-brand-contact">
+          <a className="footer-email" href={`mailto:${site.email}`}>{site.email}<span aria-hidden="true">↗</span></a>
+          <a href={`tel:${site.phone}`}>{site.phone}</a>
+          <p>Islamabad, Pakistan</p>
+        </div>
+      </div>
+      <nav className="footer-column" aria-label="Footer navigation"><h2>Navigation</h2><ul className="footer-links">{navigationLinks.map(item => <li key={item.label}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
+      <nav className="footer-column" aria-label="Footer courses"><h2>Courses</h2><ul className="footer-links">{programLinks.map(item => <li key={item.label}><Link href={item.href}>{item.label}</Link></li>)}</ul></nav>
+      <nav className="footer-column" aria-label="Footer useful links"><h2>Useful Links</h2><ul className="footer-links">{quickLinks.map(item => <li key={item.label}>{item.href.startsWith("https:") ? <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a> : <Link href={item.href}>{item.label}</Link>}</li>)}</ul></nav>
       <div className="footer-column"><h2>Social</h2><ul className="footer-links">{site.socialLinks.filter(link => link.href).map(link => <li key={link.id}><a href={link.href!} target="_blank" rel="noopener noreferrer">{link.label}</a></li>)}</ul></div>
     </div>
-    <div className="footer-bottom"><span>© {new Date().getFullYear()} Al Zikra Islamic Center. All Rights Reserved</span><span>Web by <a href="https://dynamgalaxy.com" target="_blank" rel="noopener noreferrer">Dynam Galaxy</a></span></div>
+    <div className="footer-bottom"><span>© 2026 Al Badar Quran Institute. All rights reserved.</span><span>Website by <a href="https://dynamgalaxy.com" target="_blank" rel="noopener noreferrer">Dynam Galaxy</a></span></div>
   </Container></footer>;
 }

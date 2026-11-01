@@ -9,7 +9,7 @@ export function createMetadata({ title, description, path }: PageSEO): Metadata 
     title,
     description,
     alternates: { canonical },
-    openGraph: { title: `${title} | ${site.name}`, description, url: canonical, siteName: site.name, type: "website", images: site.url ? [{ url: new URL("/assets/brand/logo-brown.jpg", site.url).href, width: 591, height: 591, alt: site.name }] : undefined },
+    openGraph: { title: `${title} | ${site.name}`, description, url: canonical, siteName: site.name, type: "website", images: site.url ? [{ url: new URL("/assets/albadar-logo.png", site.url).href, width: 882, height: 307, alt: site.name }] : undefined },
     twitter: { card: "summary", title: `${title} | ${site.name}`, description },
   };
 }

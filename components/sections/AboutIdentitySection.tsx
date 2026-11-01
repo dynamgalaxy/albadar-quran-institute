@@ -2,16 +2,16 @@ import Image from "next/image";
 import styles from "./AboutIdentitySection.module.css";
 
 const facts = [
-  { value: "2009", label: "Established", icon: "calendar" },
-  { value: "04", label: "Branches", icon: "branches" },
-  { value: "02", label: "Year Hifz pathway", icon: "book" },
-  { value: "08", label: "Year Islamic Studies", icon: "study" },
+  { value: "1:1", label: "Online lessons", icon: "book" },
+  { value: "30–60", label: "Minutes per class", icon: "study" },
+  { value: "Free", label: "Trial class", icon: "vision" },
+  { value: "9", label: "Course options", icon: "mission" },
 ] as const;
 
 const guides = [
-  { title: "Our Vision", icon: "vision", description: "Nurture young Muslims connected to the Quran, strong in character, grounded in Islamic values and ready to serve society." },
-  { title: "Our Mission", icon: "mission", description: "Provide structured Quranic and Islamic education with revision, Tajweed, Arabic, character development and close family involvement." },
-  { title: "Our Core Values", icon: "values", description: "Adab, honesty, respect, discipline and responsibility guide how students learn, behave and care for others." },
+  { title: "Quran Learning", icon: "vision", description: "Study Quran reading, Tajweed, memorization, translation and Tafseer." },
+  { title: "Individual Attention", icon: "mission", description: "One-to-one lessons let teachers focus on one student at a time." },
+  { title: "Flexible Timings", icon: "values", description: "Arrange class times according to student and teacher availability." },
 ] as const;
 
 function IdentityIcon({ kind }: { kind: string }) {
@@ -36,10 +36,10 @@ export default function AboutIdentitySection() {
             <Image src="/assets/page-imagery/about-identity-male.webp" alt="Illustrative boys reading the Quran with a male teacher" fill sizes="(max-width: 760px) 100vw, 36vw" className={styles.image} />
           </div>
           <div className={styles.introCopy}>
-            <span className="eyebrow">Al Zikra Islamic Center</span>
+            <span className="eyebrow">Al Badar Quran Institute</span>
             <h2 id="who-we-are-title">Who We Are</h2>
-            <p>Since 2009, Al Zikra Islamic Center has provided Quranic and Islamic education in Westridge III, Rawalpindi. Our non-residential approach keeps students close to their families while they learn.</p>
-            <p>Teachers guide Quran reading, memorisation and revision while encouraging discipline, good character and a lasting connection with the Quran.</p>
+            <p>Al Badar Quran Institute provides online Quranic and Islamic education for children, teenagers and adults around the world.</p>
+            <p>Students can learn Quran reading, Tajweed, memorization, translation, Tafseer and Islamic studies from the comfort of home.</p>
           </div>
         </div>
         <div className={styles.facts}>
@@ -54,8 +54,8 @@ export default function AboutIdentitySection() {
     <section className={`section ${styles.guides}`} aria-labelledby="what-guides-title">
       <div className="container">
         <div className={styles.guidesHeading}>
-          <h2 id="what-guides-title">What <em>Guides</em> Al Zikra</h2>
-          <p>Quranic learning, character and family connection shape every part of the Al Zikra approach.</p>
+          <h2 id="what-guides-title">Learning <em>with Al Badar</em></h2>
+          <p>Online courses are available for different ages and learning stages.</p>
         </div>
         <div className={styles.guideGrid}>
           {guides.map(guide => <div className={styles.guide} key={guide.title}>

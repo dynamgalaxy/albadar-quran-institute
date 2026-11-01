@@ -11,7 +11,7 @@ export default function HomeProgramsSection({ programs, ...intro }: SectionIntro
     <Container>
       <div className="home-programs-heading">
         <SectionIntro {...intro} />
-        <Button href="/courses#programs">Explore the programs <AnimatedArrow /></Button>
+        <Button href="/courses">Explore all courses <AnimatedArrow /></Button>
       </div>
       <div className="home-program-grid">
         {programs.map((program, index) => <ProgramCard key={program.id} program={program} editorial index={index} />)}

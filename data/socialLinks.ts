@@ -1,8 +1,9 @@
 import type { SocialLink } from "@/types/common";
+
 export const socialLinks: SocialLink[] = [
-  { id: "facebook", label: "Facebook", href: "https://facebook.com/alzikraislamiccenter" },
-  { id: "instagram", label: "Instagram", href: "https://instagram.com/alzikraislamiccenter" },
-  { id: "youtube", label: "YouTube", href: "https://youtube.com/@alzikraislamiccenter" },
-  { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com/company/alzikraislamiccenter" },
-  { id: "tiktok", label: "TikTok", href: "https://tiktok.com/@alzikraislamiccenter" },
+  { id: "facebook", label: "Facebook", href: "https://www.facebook.com/albadarquraninstitute/" },
+  { id: "instagram", label: "Instagram", href: "https://www.instagram.com/albadarquraninstitute/" },
+  { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/albadarquraninstitute/" },
+  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@albadarquraninstitute" },
+  { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@albadarquraninstitute" },
 ];

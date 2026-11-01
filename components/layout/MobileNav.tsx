@@ -54,7 +54,7 @@ export default function MobileNav({ items }: { items: NavigationItem[] }) {
         <nav aria-label="Mobile navigation"><ul className="mobile-menu-list">
           {items.map(item => <li key={item.label}>{item.children ? <details><summary>{item.label}<span className="mobile-menu-chevron" aria-hidden="true" /></summary><ul className="mobile-subnav">{item.children.map(child => <li key={child.href}><Link href={child.href} onClick={close}>{child.label}</Link></li>)}</ul></details> : item.href ? <Link href={item.href} onClick={close} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link> : null}</li>)}
         </ul></nav>
-        <Link className="mobile-menu-cta" href="/academics/admission" onClick={close}>Get Admission <span aria-hidden="true">↗</span></Link>
+        <Link className="mobile-menu-cta" href="/academics/admission" onClick={close}>Book Free Trial <span aria-hidden="true">↗</span></Link>
       </aside>
     </div>, document.body)}
   </div>;

@@ -43,18 +43,20 @@ export default function Testimonials() {
 
   return <section className="testimonials" aria-labelledby="testimonials-title">
     <Container>
-      <h2 id="testimonials-title">Sample community reviews</h2>
-      <div className="testimonials-track" ref={trackRef} aria-label="Sample reviews">
+      <p className="testimonial-sample-note">Illustrative sample reviews · Not verified</p>
+      <h2 id="testimonials-title">Learning stories, in their own words.</h2>
+      <div className="testimonials-track" ref={trackRef} aria-label="Student testimonials">
         {testimonials.map((item, index) => <article className="testimonial-card" key={item.id} aria-label={`Sample review ${index + 1}`}>
           <p className="testimonial-person">{item.name} <span>— {item.country}</span></p>
           <blockquote>“{item.review}”</blockquote>
           <time>{item.date}</time>
         </article>)}
+        {testimonials.length === 0 && <article className="testimonial-card"><p>Sample testimonial content is awaiting client approval and verification.</p></article>}
       </div>
       <div className="testimonials-controls" aria-label="Testimonial carousel controls">
-        <button type="button" aria-label="Previous testimonials" disabled={!scrollable} onClick={() => move(-1)}>‹</button>
+        <button type="button" aria-label="Previous testimonials" disabled={!scrollable} onClick={() => move(-1)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 7-7m-7 7 7 7" /></svg></button>
         <span className="testimonials-progress" aria-hidden="true"><span style={{ left: `${position * 60}%` }} /></span>
-        <button type="button" aria-label="Next testimonials" disabled={!scrollable} onClick={() => move(1)}>›</button>
+        <button type="button" aria-label="Next testimonials" disabled={!scrollable} onClick={() => move(1)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m0 0-7-7m7 7-7 7" /></svg></button>
       </div>
     </Container>
   </section>;

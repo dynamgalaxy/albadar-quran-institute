@@ -21,9 +21,9 @@ export default function BlogSection({ articles, categories, searchable = false, 
   const [author, setAuthor] = useState("all");
   const sortId = useId();
   const authorId = useId();
-  const authors = Array.from(new Set(articles.map(article => article.author ?? "Al Zikra Islamic Center")));
+  const authors = Array.from(new Set(articles.map(article => article.author ?? "Al Badar Quran Institute")));
   const filtered = articles
-    .filter(article => (category === "all" || article.category === category) && (author === "all" || (article.author ?? "Al Zikra Islamic Center") === author))
+    .filter(article => (category === "all" || article.category === category) && (author === "all" || (article.author ?? "Al Badar Quran Institute") === author))
     .sort((a, b) => sort === "title-asc" ? a.title.localeCompare(b.title) : sort === "title-desc" ? b.title.localeCompare(a.title) : 0);
   const grid = (items: BlogArticle[]) => items.length ? <div className="card-grid">{items.map(article => <BlogCard key={article.id} article={article} />)}</div> : <p className="empty-state">No articles match this selection.</p>;
 
@@ -31,7 +31,7 @@ export default function BlogSection({ articles, categories, searchable = false, 
     <div className="container">
       <header className="blog-library-heading">
         <h2 id="blog-library-title">Explore Our <em>Library</em></h2>
-        <p>Browse reflections on Quran learning, Islamic knowledge and family life. Choose a topic and open any article to read more.</p>
+        <p>Institute articles will appear here when available.</p>
       </header>
       <div className="blog-filter-panel" aria-label="Browse articles">
         <div className="blog-filter-title">

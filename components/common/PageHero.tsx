@@ -18,11 +18,11 @@ export interface PageHeroProps {
   secondaryCTA?: CTA;
   backButton?: boolean;
   alignment?: Alignment;
-  variant?: "default" | "home" | "inner" | "compact";
+  variant?: "default" | "home" | "inner" | "course" | "compact";
 }
 export default function PageHero({ eyebrow, title, description, backgroundImage, breadcrumbs, primaryCTA, secondaryCTA, backButton = false, alignment = "left", variant = "inner" }: PageHeroProps) {
   const heroImage = backgroundImage ?? { src: "/assets/page-imagery/not-found-hero.webp", alt: "" };
-  const imageHero = variant === "home" || variant === "inner";
+  const imageHero = variant === "home" || variant === "inner" || variant === "course";
   return <section className={cn("page-hero", imageHero && "hero-home", `hero-${variant}`, `align-${alignment}`)} data-header-surface={imageHero ? "dark" : undefined}>
     {imageHero && <><Image src={heroImage.src} alt={heroImage.alt} fill priority fetchPriority="high" sizes="100vw" quality={85} className="home-hero-image" /><div className="home-hero-shade" aria-hidden="true" /></>}
     <Container className={imageHero ? "hero-layout" : undefined}>

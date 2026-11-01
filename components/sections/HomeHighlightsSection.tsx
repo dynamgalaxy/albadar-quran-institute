@@ -13,7 +13,7 @@ export default function HomeHighlightsSection({ items }: { items: typeof startSt
         </div>)}
       </div>
       <div className="home-highlights-cta">
-        <p>Explore the learning areas below and ask us about current schedules and enrolment.</p>
+        <p>Not sure where to begin? Tell us what you hope to learn.</p>
         <Link href="/contact#enquiry">Send an enquiry <AnimatedArrow /></Link>
       </div>
     </Container>

@@ -18,7 +18,7 @@ export default function BlogCard({ article }: { article: BlogArticle }) {
     </article>
     <Modal open={open} onClose={() => setOpen(false)} title={article.title} className="blog-reader-dialog">
       <div className="blog-reader-copy">
-        <p className="eyebrow">{article.category} · Al Zikra Islamic Center</p>
+        <p className="eyebrow">{article.category} · Al Badar Quran Institute</p>
         <p className="blog-reader-lead">{article.description}</p>
         {article.body.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
       </div>

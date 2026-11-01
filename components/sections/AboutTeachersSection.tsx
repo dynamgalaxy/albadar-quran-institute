@@ -1,17 +1,17 @@
 import styles from "./AboutTeachersSection.module.css";
 
 const strengths = [
-  { title: "Close supervision", description: "Teachers guide Quran reading, memorisation and regular revision, identifying and correcting mistakes." },
-  { title: "Individual attention", description: "Students receive guidance and encouragement suited to their learning pace and progress." },
-  { title: "Character & family", description: "Adab, responsibility and regular parent communication remain part of the learning experience." },
+  { title: "One-to-One Classes", description: "The teacher focuses on one student at a time." },
+  { title: "Male & Female Teachers", description: "Female teachers may be available for female students and children, subject to availability." },
+  { title: "Patient & Encouraging", description: "Lessons are designed to provide a peaceful, respectful and enjoyable learning experience." },
 ] as const;
 
 export default function AboutTeachersSection() {
-  return <section className={`section ${styles.section}`} aria-labelledby="about-teachers-title">
+  return <section id="teachers" className={`section ${styles.section}`} aria-labelledby="about-teachers-title">
     <div className="container">
       <div className={styles.heading}>
         <div><span className="eyebrow">Guided learning</span><h2 id="about-teachers-title">Our Teachers</h2></div>
-        <p>Experienced and highly qualified teachers provide structured guidance, careful correction and steady encouragement throughout each student’s Quranic journey.</p>
+        <p>Teacher names and credentials are not listed. Ask the institute about current teacher availability when you enquire.</p>
       </div>
       <div className={styles.grid}>
         {strengths.map((strength, index) => <div className={styles.item} key={strength.title}>
@@ -24,7 +24,7 @@ export default function AboutTeachersSection() {
           <p>{strength.description}</p>
         </div>)}
       </div>
-      <p className={styles.note}>Individual teacher names and portraits will be added when confirmed.</p>
+      <p className={styles.note}>Teacher names and profiles have not been provided.</p>
     </div>
   </section>;
 }

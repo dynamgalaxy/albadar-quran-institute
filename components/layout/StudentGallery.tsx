@@ -67,7 +67,7 @@ export default function StudentGallery() {
     <Container>
       <div className="student-gallery-heading">
         <h2 id="student-gallery-title">Our Students Gallery</h2>
-        <p>Explore Quran learning through illustrative student images and sample video clips.</p>
+        <p>Explore Quran learning through student and online lesson imagery.</p>
       </div>
       <div className="student-gallery-stage">
         {previousPage !== null && renderGrid(previousPage, true)}

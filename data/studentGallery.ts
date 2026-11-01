@@ -7,7 +7,7 @@ export type StudentGalleryItem = {
   sourcePage?: string;
 };
 
-// Illustrative images and licensed stock clips. Replace with approved Al Zikra media when available.
+// Student and online-learning imagery supplied with the target website assets.
 export const studentGallery: StudentGalleryItem[] = [
   { id: "reading-boy", kind: "image", poster: "/assets/gallery/student-reading-boy.webp", alt: "Illustrative image of a boy reading Quran beside a laptop" },
   { id: "reading-solo-boy", kind: "image", poster: "/assets/gallery/student-reading-solo-boy.webp", alt: "Illustrative image of a boy reading Quran" },

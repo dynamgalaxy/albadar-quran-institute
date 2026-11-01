@@ -1,35 +1,51 @@
+import Image from "next/image";
 import Container from "@/components/common/Container";
 import Button from "@/components/common/Button";
 import AnimatedArrow from "@/components/common/AnimatedArrow";
 import { programDetails } from "@/data/programDetails";
+import { courseStories } from "@/data/courseStories";
+import styles from "./ProgramDetailSections.module.css";
 
-export default function ProgramDetailSections({ slug, title }: { slug: string; title: string; description: string }) {
+export default function ProgramDetailSections({ slug, title }: { slug: string; title: string }) {
   const detail = programDetails[slug];
   if (!detail) return null;
+  const story = courseStories[slug] ?? {
+    message: detail.description,
+    note: `A focused path through ${title}.`,
+    quote: detail.description,
+    steps: detail.learningFocus.slice(0, 4).map(focus => ({ title: focus, description: "Discuss this focus in a trial class." })),
+    benefits: [...detail.learningFocus.slice(0, 4)],
+  };
 
   return <>
-    <section className="program-learner-message" aria-labelledby="program-learner-message-title"><Container>
-      <span className="program-learner-eyebrow">OUR MESSAGE</span>
-      <h2 id="program-learner-message-title">Learning for every learner</h2>
-      <p>At Al Zikra, Quranic education brings together knowledge, character and family life. Students attend during the day and return home to their families.</p>
-      <div className="program-learner-stats" aria-label="Al Zikra at a glance">
-        <div><span>Established</span><strong>2009</strong></div>
-        <div><span>Branches</span><strong>04</strong></div>
-        <div><span>Year Hifz pathway</span><strong>02</strong></div>
+    <section className={styles.message} aria-labelledby="program-message-title"><Container className={styles.container}>
+      <p className={styles.eyebrow}>OUR MESSAGE</p>
+      <h2 id="program-message-title">Learning for every learner</h2>
+      <p className={styles.messageText}>{story.message}</p>
+      <div className={styles.stats} aria-label="Al Badar Quran Institute learning highlights">
+        <div><span>One-to-one lessons</span><strong>1:1</strong></div>
+        <div><span>Course pathways</span><strong>09</strong></div>
+        <div><span>Trial class</span><strong>Free</strong></div>
       </div>
     </Container></section>
-    <section className="program-overview" data-header-surface="dark" aria-labelledby="program-overview-title"><Container>
-      <div className="program-overview-intro">
-        <div><span className="program-kicker">ABOUT THE COURSE</span><h2 id="program-overview-title">About {title}</h2></div>
-        <p>{detail.overview}</p>
+
+    <section className={styles.about} data-header-surface="dark" aria-labelledby="program-about-title"><Container className={styles.container}>
+      <div className={styles.aboutIntro}><p className={styles.eyebrow}>ABOUT THE COURSE</p><h2 id="program-about-title">About {title}</h2><p>{detail.description}</p></div>
+      <div className={styles.art}>
+        <p className={styles.note}>{story.note}</p>
+        <div className={styles.ribbon} aria-hidden="true">LEARN · PRACTISE · PROGRESS | LEARN · PRACTISE · PROGRESS | LEARN · PRACTISE · PROGRESS</div>
+        <div className={styles.portrait}><Image src="/assets/home/images/about-child-quran-laptop.png" alt="Child reading the Quran beside a laptop" fill sizes="(max-width: 600px) 220px, 240px" /></div>
+        <div className={styles.quote}><span aria-hidden="true">✦</span><p>{story.quote}</p></div>
       </div>
-      <div className="program-requirements-heading"><h3>Course details</h3><p>Review the learning pathway, eligibility and attendance information below.</p></div>
-      <ol className="program-requirements">{detail.requirements.map((item, index) => <li key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h4>{item.title}</h4><p>{item.description}</p></li>)}</ol>
-      <div className="program-focus"><div><span className="program-kicker">LEARNING FOCUS</span><p>{detail.focus}</p></div><Button href="/contact#enquiry">Ask about this course <AnimatedArrow /></Button></div>
+      <ol className={styles.timeline}>{story.steps.map((step, index) => <li key={`${step.title}-${index}`}><span className={styles.index}>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3><p>{step.description}</p></li>)}</ol>
+      <div className={styles.action}><Button href="/contact#enquiry">Ask about this course <AnimatedArrow /></Button></div>
     </Container></section>
-    <section className="program-why" aria-labelledby="program-why-title"><Container>
-      <div className="program-why-intro"><span className="program-kicker">WHY EXPLORE THIS COURSE</span><h2 id="program-why-title">Why choose {title}?</h2><p>Key areas of learning and development described for this pathway.</p></div>
-      <div className="program-benefits">{detail.benefits.map((benefit, index) => <div key={benefit}><span>{String(index + 1).padStart(2, "0")}</span><h3>{benefit}</h3></div>)}</div>
+
+    <section className={styles.explore} aria-labelledby="program-explore-title"><Container className={styles.container}>
+      <p className={styles.eyebrow}>WHAT YOU CAN WORK ON</p>
+      <h2 id="program-explore-title">Why choose<br />{title}?</h2>
+      <p className={styles.exploreText}>Explore the course focus and discuss how it connects to the learner’s current level and aims.</p>
+      <ol className={styles.benefits}>{story.benefits.map((benefit, index) => <li key={`${benefit}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><p>{benefit}</p></li>)}</ol>
     </Container></section>
   </>;
 }

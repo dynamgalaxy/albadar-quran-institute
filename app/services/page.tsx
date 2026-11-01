@@ -2,7 +2,7 @@ import PageHero from "@/components/common/PageHero";
 import Container from "@/components/common/Container";
 import SectionIntro from "@/components/common/SectionIntro";
 import ServicesGridSection from "@/components/sections/ServicesGridSection";
-import WhyAlZikraSection from "@/components/sections/WhyAlZikraSection";
+import WhyAlBadarSection from "@/components/sections/WhyAlBadarSection";
 import CommunityImpactSection from "@/components/sections/CommunityImpactSection";
 import ProgramsSection from "@/components/sections/ProgramsSection";
 import { pages, sectionContent, reasons } from "@/data/pages";
@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <PageHero {...pages.services.hero} />
       <Container className="page-intro"><SectionIntro {...sectionContent.servicesIntro} /></Container>
       <ServicesGridSection {...sectionContent.services} services={services} />
-      <WhyAlZikraSection {...sectionContent.why} items={reasons} />
+      <WhyAlBadarSection {...sectionContent.why} items={reasons} />
       <CommunityImpactSection {...sectionContent.impact} stats={impactStats} />
       <ProgramsSection {...sectionContent.programs} programs={programs} />
     </>

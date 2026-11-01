@@ -2,18 +2,18 @@ import styles from "./AboutCommunityImpactSection.module.css";
 
 const milestones = [
   {
-    title: "Quran learning since 2009",
-    description: "Structured Quranic and Islamic education has been at the heart of Al Zikra since its establishment.",
+    title: "Online Quran learning",
+    description: "Courses are offered for children, teenagers and adults.",
     icon: "book",
   },
   {
-    title: "Family partnership",
-    description: "Non-residential study keeps students close to home while parents stay involved in their progress.",
+    title: "One-to-one classes",
+    description: "The teacher focuses on one student at a time.",
     icon: "family",
   },
   {
-    title: "Character in daily life",
-    description: "Adab, discipline and responsibility are taught alongside memorisation, recitation and revision.",
+    title: "Flexible schedules",
+    description: "Class timings are arranged according to student and teacher availability.",
     icon: "heart",
   },
 ] as const;
@@ -31,9 +31,9 @@ export default function AboutCommunityImpactSection() {
   return <section className={`section ${styles.section}`} aria-labelledby="community-impact-title">
     <div className="container">
       <div className={styles.heading}>
-        <span className="eyebrow">Our contribution</span>
-        <h2 id="community-impact-title">Community <em>Impact</em></h2>
-        <p>Quranic learning, family connection and character development shape Al Zikra’s work in the community.</p>
+        <span className="eyebrow">Our approach</span>
+        <h2 id="community-impact-title">Online <em>Learning</em></h2>
+        <p>Al Badar Quran Institute provides online Quran and Islamic studies with individual attention.</p>
       </div>
       <div className={styles.timeline}>
         <svg className={styles.curve} viewBox="0 0 1200 250" preserveAspectRatio="none" aria-hidden="true" focusable="false">

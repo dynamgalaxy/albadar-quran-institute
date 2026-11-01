@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jobs, qualifications } from "@/data/jobs";
+import { company } from "@/data/company";
 
 export const runtime = "nodejs";
 
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.CAREER_FROM_EMAIL;
-  if (!apiKey || !from) return invalid("Applications are temporarily unavailable. Please contact career@alzikra.org directly.", 503);
+  if (!apiKey || !from || !company.email) return invalid("Applications are temporarily unavailable. Please contact the institute directly.", 503);
   const experience = field(form, "experience");
   if (experience.length > 1000) return invalid("Experience details are too long.");
   const lines = [`Role: ${job.title}`, ...required.map(name => `${name}: ${field(form, name).replace(/[\r\n]/g, " ")}`), `Qualifications: ${selected.join(", ")}`, `Relevant experience: ${experience || "Not provided"}`];
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest) {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from, to: ["career@alzikra.org"], subject: `Career application: ${job.title}`, text: lines.join("\n"), attachments }),
+      body: JSON.stringify({ from, to: [company.email], subject: `Career application: ${job.title}`, text: lines.join("\n"), attachments }),
       cache: "no-store",
     });
     if (!response.ok) return invalid("Application could not be delivered. Please try again later.", 502);
