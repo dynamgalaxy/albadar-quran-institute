@@ -20,7 +20,7 @@ export interface PageHeroProps {
   alignment?: Alignment;
   variant?: "default" | "home" | "inner" | "course" | "compact";
 }
-export default function PageHero({ eyebrow, title, description, backgroundImage, breadcrumbs, primaryCTA, secondaryCTA, backButton = false, alignment = "left", variant = "inner" }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, description, backgroundImage, breadcrumbs, primaryCTA, secondaryCTA, backButton = false, alignment = "left", variant = "course" }: PageHeroProps) {
   const heroImage = backgroundImage ?? { src: "/assets/page-imagery/not-found-hero.webp", alt: "" };
   const imageHero = variant === "home" || variant === "inner" || variant === "course";
   return <section className={cn("page-hero", imageHero && "hero-home", `hero-${variant}`, `align-${alignment}`)} data-header-surface={imageHero ? "dark" : undefined}>

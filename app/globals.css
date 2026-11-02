@@ -194,13 +194,13 @@ main > .section:nth-of-type(odd) { background: #f8f4ed; }
 .site-header--home.site-header--scrolled:not(.site-header--on-light) .mobile-nav .nav-list a { color: #3b2c20; }
 .mobile-nav .nav-list { margin: 0; gap: 0; }
 .mobile-nav .nav-list a { width: 100%; padding: .35rem .25rem; color: #fffaf0; }
-.page-hero { position: relative; overflow: hidden; padding-block: clamp(4.5rem, 9vw, 8rem); background: #eee5d4; }
+.page-hero { position: relative; overflow: hidden; padding-block: clamp(3.5rem, 7vw, 6.5rem); background: #eee5d4; }
 .page-hero::before { display: none; }
 .page-hero .container { position: relative; }
 .page-hero:not(.hero-home) h1 { font-size: clamp(3rem, 6vw, 5.7rem); }
 .hero-description { max-width: 55ch; font-size: clamp(1.05rem, 1.55vw, 1.25rem); line-height: 1.8; }
 .hero-home { display: flex; align-items: flex-end; min-height: min(850px, 100svh); margin: .55rem .55rem 0; padding: 10rem 0 clamp(2rem, 4vw, 3rem); background: #8f7451; border-radius: .2rem .2rem 0 0; }
-.hero-home.hero-inner { min-height: clamp(25rem, 48vw, 34rem); padding-top: clamp(7rem, 11vw, 9rem); }
+.hero-home.hero-inner { min-height: clamp(22rem, 40vw, 29rem); padding-top: clamp(6rem, 9vw, 7.5rem); }
 .hero-home::before { display: none; }
 .home-hero-image { object-fit: cover; object-position: center 42%; filter: brightness(.9); }
 .home-hero-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgb(42 28 14 / .24) 0%, rgb(43 29 15 / .08) 34%, rgb(50 34 19 / .48) 59%, #352617 100%); }
@@ -522,11 +522,11 @@ input:focus, textarea:focus { outline: 0; border-color: var(--color-accent); box
   .desktop-nav { display: block; }
   .mobile-nav { display: none; }
 }
-@media (max-width: 620px) { .site-header .logo { width: 92px; height: 60px; } .header-inner { min-height: 60px; } .site-header--home, .site-header--home.site-header--scrolled { padding-top: .65rem; } .site-header--home.site-header--scrolled .desktop-nav { transform: translateY(calc(-60px - .25rem)); } .desktop-nav .nav-list a { font-size: .86rem; padding-inline: .35rem; } .header-actions .button { min-height: 36px; padding: .42rem .65rem; font-size: .86rem; } .hero-home { min-height: min(780px, 100svh); padding: 8rem 0 2rem; } .hero-home h1 { font-size: clamp(2.35rem, 10vw, 3.2rem); } .home-hero-image { object-position: 56% center; } .home-hero-shade { background: linear-gradient(180deg, rgb(43 29 15 / .26) 0%, rgb(43 29 15 / .12) 28%, rgb(43 29 15 / .72) 56%, #352617 100%); } .page-hero:not(.hero-home) { padding-block: 4rem; } .footer-links { gap: .7rem 1.3rem; } }
+@media (max-width: 620px) { .site-header .logo { width: 92px; height: 60px; } .header-inner { min-height: 60px; } .site-header--home, .site-header--home.site-header--scrolled { padding-top: .65rem; } .site-header--home.site-header--scrolled .desktop-nav { transform: translateY(calc(-60px - .25rem)); } .desktop-nav .nav-list a { font-size: .86rem; padding-inline: .35rem; } .header-actions .button { min-height: 36px; padding: .42rem .65rem; font-size: .86rem; } .hero-home { min-height: min(780px, 100svh); padding: 8rem 0 2rem; } .hero-home h1 { font-size: clamp(2.35rem, 10vw, 3.2rem); } .home-hero-image { object-position: 56% center; } .home-hero-shade { background: linear-gradient(180deg, rgb(43 29 15 / .26) 0%, rgb(43 29 15 / .12) 28%, rgb(43 29 15 / .72) 56%, #352617 100%); } .page-hero:not(.hero-home) { padding-block: 3.25rem; } .footer-links { gap: .7rem 1.3rem; } }
 @media (max-width: 620px) { .site-header .logo.logo-header { width: clamp(7.5rem, 35vw, 10.5rem); } }
 @media (max-width: 319px) { .site-header--home .header-inner { padding-bottom: 0; } }
 @media (max-width: 390px) { .hero-home .actions { display: grid; grid-template-columns: 1fr; } .hero-home .button { width: 100%; } }
-@media (max-width: 767px) { .hero-home.hero-inner { min-height: 0; padding: 6.5rem 0 2.5rem; } }
+@media (max-width: 767px) { .hero-home.hero-inner { min-height: 0; padding: 5.75rem 0 2.25rem; } }
 @media (max-width: 560px) { .footer-cta { min-height: 31rem; padding-block: 4rem; } .footer-cta-action { flex-direction: column; align-items: stretch; text-align: center; } .footer-cta-action input, .footer-cta-action button { width: 100%; } }
 
 /* Navigation groups */
@@ -873,7 +873,7 @@ input:focus, textarea:focus { outline: 0; border-color: var(--color-accent); box
 
 /* Course detail heroes use the Al Badar child-and-laptop image and the shared hero controls. */
 .site-header--course .container.header-inner, .hero-home.hero-course .container { width: min(100rem, calc(100% - clamp(2rem, 16vw, 20rem))); }
-.hero-home.hero-course { min-height: min(40rem, 100svh); margin: 0; padding-bottom: clamp(3.5rem, 6vw, 6rem); border-radius: 0; }
+.hero-home.hero-course { min-height: min(34rem, 100svh); margin: 0; padding-bottom: clamp(3rem, 5vw, 5rem); border-radius: 0; }
 .hero-home.hero-course .home-hero-image { object-position: center 43%; filter: brightness(.86); }
 .hero-home.hero-course .home-hero-shade { background: linear-gradient(90deg, rgb(29 20 13 / .42), rgb(29 20 13 / .18) 65%, rgb(29 20 13 / .28)), linear-gradient(180deg, rgb(29 20 13 / .3), transparent 35%, rgb(29 20 13 / .77)); }
 .hero-home.hero-course .eyebrow { margin-bottom: 1rem; padding: .55rem .8rem; background: #f4e7cb; color: #624821; font-size: .72rem; font-weight: 600; letter-spacing: .08em; }
@@ -884,4 +884,4 @@ input:focus, textarea:focus { outline: 0; border-color: var(--color-accent); box
 .hero-home.hero-course .button-secondary { background: rgb(255 253 247 / .1); border-color: rgb(255 253 247 / .4); }
 @media (min-width: 900px) { .hero-home.hero-course .actions { bottom: -1rem; } }
 @media (max-width: 1039px) { .site-header--course .container.header-inner, .hero-home.hero-course .container { width: calc(100% - 2.25rem); } }
-@media (max-width: 767px) { .hero-home.hero-course { min-height: min(37rem, 100svh); padding: 8rem 0 2.5rem; } .hero-home.hero-course .eyebrow { font-size: .64rem; } .hero-home.hero-course h1 { font-size: clamp(2.45rem, 8.5vw, 3.5rem); } .hero-home.hero-course .hero-description { max-width: 48ch; font-size: .9rem; } .hero-home.hero-course .button { min-height: 2.7rem; padding: .6rem .85rem; font-size: .8rem; } }
+@media (max-width: 767px) { .hero-home.hero-course { min-height: min(31rem, 100svh); padding: 7rem 0 2.25rem; } .hero-home.hero-course .eyebrow { font-size: .64rem; } .hero-home.hero-course h1 { font-size: clamp(2.45rem, 8.5vw, 3.5rem); } .hero-home.hero-course .hero-description { max-width: 48ch; font-size: .9rem; } .hero-home.hero-course .button { min-height: 2.7rem; padding: .6rem .85rem; font-size: .8rem; } }

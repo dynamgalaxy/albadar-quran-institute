@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/common/Container";
+import PageHero from "@/components/common/PageHero";
 import { navigation, policyLinks } from "@/data/navigation";
 import { courses } from "@/data/courses";
 import { createMetadata } from "@/lib/seo";
@@ -34,7 +35,7 @@ const groups = [
 
 export default function SitemapPage() {
   return <>
-    <section className="sitemap-hero" data-header-surface="dark"><Container><span className="eyebrow">Al Badar Quran Institute</span><h1>Sitemap</h1><p>Find your way through our courses and institute pages.</p></Container></section>
+    <PageHero eyebrow="Al Badar Quran Institute" title="Sitemap" description="Find your way through our courses and institute pages." backgroundImage={{ src: "/assets/home/images/about-child-quran-laptop.png", alt: "" }} />
     <section className="section sitemap-directory" aria-label="Website pages"><Container><div className="sitemap-grid">{groups.map(group => <div className="sitemap-group" key={group.title}><h2>{group.title}</h2><ul>{group.links.map(link => <li key={link.href}><Link href={link.href}>{link.label}<span aria-hidden="true">↗</span></Link></li>)}</ul></div>)}</div></Container></section>
   </>;
 }

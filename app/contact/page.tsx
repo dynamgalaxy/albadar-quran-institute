@@ -1,10 +1,8 @@
 import { pages } from "@/data/pages";
 import PageHero from "@/components/common/PageHero";
-import AboutBranchesSection from "@/components/sections/AboutBranchesSection";
 import ContactForm from "@/components/common/ContactForm";
 import { contact } from "@/data/contact";
 import { company } from "@/data/company";
-import { campuses } from "@/data/campuses";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata(pages.contact.seo);
@@ -28,7 +26,6 @@ export default function ContactPage() {
           <ContactForm notice={contact.formNotice} />
         </div>
       </section>
-      <AboutBranchesSection campuses={campuses} />
     </>
   );
 }

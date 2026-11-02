@@ -55,7 +55,7 @@ const faqs: FAQ[] = [
 
 export default function PricingPage() {
   return <>
-    <HeroSection eyebrow="AFFORDABLE & REASONABLE FEES" title="Monthly Plans" description="We aim to provide quality Quran education at a fee that works for your family. Every plan starts with a free trial class." backgroundImage={{ src: "/assets/home/images/hero-quran-learning.png", alt: "" }} primaryCTA={{ label: "View monthly plans", href: "#plans" }} secondaryCTA={{ label: "Book a free trial", href: "/contact#enquiry" }} />
+    <HeroSection variant="course" eyebrow="AFFORDABLE & REASONABLE FEES" title="Monthly Plans" description="We aim to provide quality Quran education at a fee that works for your family. Every plan starts with a free trial class." backgroundImage={{ src: "/assets/home/images/hero-quran-learning.png", alt: "" }} primaryCTA={{ label: "View monthly plans", href: "#plans" }} secondaryCTA={{ label: "Book a free trial", href: "/contact#enquiry" }} />
 
     <section id="plans" className={styles.plans} aria-label="Monthly pricing plans">
       <Container>
