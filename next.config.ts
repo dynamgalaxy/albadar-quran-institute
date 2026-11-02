@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { source: "/courses/quran-tafseer", destination: "/courses/quran-translation-and-tafsir", permanent: true },
       { source: "/courses/basic-islamic-studies", destination: "/courses/islamic-studies", permanent: true },
       { source: "/courses/islamic-studies-for-kids", destination: "/courses/islamic-studies", permanent: true },
+      { source: "/courses/arabic", destination: "/courses/arabic-language-basics", permanent: true },
     ];
   },
 };

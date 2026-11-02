@@ -22,7 +22,6 @@ const entries: [string, CourseCategory, string][] = [
   ["Biology", "Science & Mathematics", "Explore living things, cells and the processes of life."],
   ["General Science", "Science & Mathematics", "Develop scientific understanding across life, physical and earth sciences."],
   ["English", "Languages", "Develop reading, writing, speaking and listening skills in English."],
-  ["Arabic", "Languages", "Explore Arabic reading, vocabulary and everyday expression."],
   ["Urdu", "Languages", "Build Urdu reading, writing and conversational skills."],
 ];
 const courseRoutes: Record<string, string> = {
@@ -47,7 +46,6 @@ const courseRoutes: Record<string, string> = {
   "Biology": "/courses/biology",
   "General Science": "/courses/general-science",
   "English": "/courses/english",
-  "Arabic": "/courses/arabic",
   "Urdu": "/courses/urdu",
 };
 export const courses: Course[] = entries.map(([title, category, description], index) => ({ id: `course-${index}`, title, category, description, href: courseRoutes[title] }));

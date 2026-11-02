@@ -28,7 +28,7 @@ export const pages = {
 } satisfies Record<string, PageContent>;
 
 export const sectionContent = {
-  homePrograms: { eyebrow: "Learning pathways", title: "Our courses", description: "From the first Arabic letters to deeper study of the Quran, explore a course that meets the learner where they are." },
+  homePrograms: { eyebrow: "Learning pathways", title: "Our courses" },
   about: { eyebrow: "Al Badar Quran Institute", title: "Quran learning for every stage", description: "Al Badar teaches Quran and Islamic studies through one-to-one online lessons for children, teenagers and adults. A free trial gives each learner space to share their experience and discuss where to begin; from there, reading, recitation and understanding can develop at a suitable pace." },
   story: { title: "Our Approach", description: "Begin with what you know. Keep building with care." },
   services: { title: "Our Services", description: "Online Quran and Islamic studies with individual attention and flexible scheduling." },

@@ -186,14 +186,6 @@ export const programDetails: Record<string, ProgramDetail> = {
     progression: "Discuss a current level, then practise comprehension and expression through suitable words, texts and conversation.",
     learningFocus: ["Reading comprehension", "Writing clearly", "Speaking practice", "Listening skills"],
   },
-  arabic: {
-    number: "24", level: "Discuss in a trial",
-    description: "Explore Arabic reading, vocabulary and everyday expression.",
-    overview: "This course develops Arabic language understanding through reading and useful expressions.",
-    suitableFor: "May suit learners who want to study Arabic beyond or alongside the existing Arabic Language Basics course.",
-    progression: "A learner can review reading foundations, then build vocabulary and practise forming expressions.",
-    learningFocus: ["Reading Arabic", "Useful vocabulary", "Sentence building", "Everyday expression"],
-  },
   urdu: {
     number: "25", level: "Discuss in a trial",
     description: "Build Urdu reading, writing and conversational skills.",

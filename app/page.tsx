@@ -4,7 +4,7 @@ import HomeProgramsSection from "@/components/sections/HomeProgramsSection";
 import HomeJourneySection from "@/components/sections/HomeJourneySection";
 import { pages, sectionContent } from "@/data/pages";
 import { startSteps } from "@/data/programs";
-import { featuredCourses } from "@/data/courses";
+import { courses, courseCategories } from "@/data/courses";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata(pages.home.seo);
@@ -14,7 +14,7 @@ export default function HomePage() {
     <>
       <HeroSection {...pages.home.hero} />
       <HomeHighlightsSection items={startSteps} />
-      <HomeProgramsSection {...sectionContent.homePrograms} programs={featuredCourses.filter(course => course.id !== "nasheed-reciting")} />
+      <HomeProgramsSection {...sectionContent.homePrograms} courses={courses} categories={courseCategories} />
       <HomeJourneySection />
     </>
   );
