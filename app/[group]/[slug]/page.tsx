@@ -22,7 +22,7 @@ const preservedRoutes: NavigationLink[] = [
   { label: "Quran Reading / Nazra Quran", href: "/programs/nazra-quran" },
   { label: "Quran with Tajweed", href: "/programs/tajweed" },
   { label: "Hifz-ul-Quran", href: "/programs/hifz-ul-quran" },
-  { label: "Basic Islamic Studies", href: "/programs/islamic-studies" },
+  { label: "Islamic Studies", href: "/programs/islamic-studies" },
 ];
 const courseEntries: NavigationLink[] = courses.flatMap(course => course.href ? [{ label: course.title, href: course.href, description: course.description }] : []);
 const candidates = [...courseEntries, ...navigation.flatMap(item => item.children ?? []), ...policyLinks, ...preservedRoutes];
@@ -31,7 +31,7 @@ const legacyCourseSlugs: Record<string, string> = {
   "nazra-quran": "quran-reading",
   tajweed: "quran-with-tajweed",
   "hifz-ul-quran": "hifz-ul-quran",
-  "islamic-studies": "basic-islamic-studies",
+  "islamic-studies": "islamic-studies",
 };
 
 const existingPageCopy: Record<string, { hero: string; title?: string; description?: string; cards?: ContentItem[]; body?: string }> = {

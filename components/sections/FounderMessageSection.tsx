@@ -62,7 +62,7 @@ export default function FounderMessageSection({ title, description }: FounderMes
             <h3>Courses and class format</h3>
           </div>
           <div className={styles.fullMessageBody}>
-            <p>Al Badar Quran Institute offers Quran reading, Tajweed, memorization, translation, Tafseer, Islamic studies and Arabic basics.</p>
+            <p>Al Badar Quran Institute offers Quran reading, Tajweed, memorization, Quran Translation & Tafsir, Islamic studies and Arabic basics.</p>
             <p>Classes are one-to-one and can be arranged at flexible times. New students can request a free trial class before enrolling.</p>
           </div>
         </div>

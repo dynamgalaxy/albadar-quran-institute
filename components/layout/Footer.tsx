@@ -21,10 +21,8 @@ const programLinks = [
   { label: "Quran Reading / Nazra Quran", href: "/courses/quran-reading" },
   { label: "Quran with Tajweed", href: "/courses/quran-with-tajweed" },
   { label: "Hifz-ul-Quran", href: "/courses/hifz-ul-quran" },
-  { label: "Quran Translation", href: "/courses/quran-translation" },
-  { label: "Quran Tafseer", href: "/courses/quran-tafseer" },
-  { label: "Basic Islamic Studies", href: "/courses/basic-islamic-studies" },
-  { label: "Islamic Studies for Kids", href: "/courses/islamic-studies-for-kids" },
+  { label: "Quran Translation & Tafsir", href: "/courses/quran-translation-and-tafsir" },
+  { label: "Islamic Studies", href: "/courses/islamic-studies" },
   { label: "Arabic Language Basics", href: "/courses/arabic-language-basics" },
 ];
 

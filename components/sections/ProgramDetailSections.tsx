@@ -4,16 +4,17 @@ import Button from "@/components/common/Button";
 import AnimatedArrow from "@/components/common/AnimatedArrow";
 import { programDetails } from "@/data/programDetails";
 import { courseStories } from "@/data/courseStories";
+import { courses } from "@/data/courses";
 import styles from "./ProgramDetailSections.module.css";
 
 export default function ProgramDetailSections({ slug, title }: { slug: string; title: string }) {
   const detail = programDetails[slug];
   if (!detail) return null;
   const story = courseStories[slug] ?? {
-    message: detail.description,
+    message: detail.overview,
     note: `A focused path through ${title}.`,
     quote: detail.description,
-    steps: detail.learningFocus.slice(0, 4).map(focus => ({ title: focus, description: "Discuss this focus in a trial class." })),
+    steps: detail.learningFocus.slice(0, 4).map(focus => ({ title: focus, description: "" })),
     benefits: [...detail.learningFocus.slice(0, 4)],
   };
 
@@ -24,7 +25,7 @@ export default function ProgramDetailSections({ slug, title }: { slug: string; t
       <p className={styles.messageText}>{story.message}</p>
       <div className={styles.stats} aria-label="Al Badar Quran Institute learning highlights">
         <div><span>One-to-one lessons</span><strong>1:1</strong></div>
-        <div><span>Course pathways</span><strong>09</strong></div>
+        <div><span>Course pathways</span><strong>{String(courses.length).padStart(2, "0")}</strong></div>
         <div><span>Trial class</span><strong>Free</strong></div>
       </div>
     </Container></section>
@@ -37,7 +38,7 @@ export default function ProgramDetailSections({ slug, title }: { slug: string; t
         <div className={styles.portrait}><Image src="/assets/home/images/about-child-quran-laptop.png" alt="Child reading the Quran beside a laptop" fill sizes="(max-width: 600px) 220px, 240px" /></div>
         <div className={styles.quote}><span aria-hidden="true">✦</span><p>{story.quote}</p></div>
       </div>
-      <ol className={styles.timeline}>{story.steps.map((step, index) => <li key={`${step.title}-${index}`}><span className={styles.index}>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3><p>{step.description}</p></li>)}</ol>
+      <ol className={styles.timeline}>{story.steps.map((step, index) => <li key={`${step.title}-${index}`}><span className={styles.index}>{String(index + 1).padStart(2, "0")}</span><h3>{step.title}</h3>{step.description && <p>{step.description}</p>}</li>)}</ol>
       <div className={styles.action}><Button href="/contact#enquiry">Ask about this course <AnimatedArrow /></Button></div>
     </Container></section>
 

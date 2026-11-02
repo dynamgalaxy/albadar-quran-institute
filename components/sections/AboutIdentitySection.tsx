@@ -1,15 +1,16 @@
 import Image from "next/image";
+import { courses } from "@/data/courses";
 import styles from "./AboutIdentitySection.module.css";
 
 const facts = [
   { value: "1:1", label: "Online lessons", icon: "book" },
   { value: "30–60", label: "Minutes per class", icon: "study" },
   { value: "Free", label: "Trial class", icon: "vision" },
-  { value: "9", label: "Course options", icon: "mission" },
+  { value: String(courses.length), label: "Course options", icon: "mission" },
 ] as const;
 
 const guides = [
-  { title: "Quran Learning", icon: "vision", description: "Study Quran reading, Tajweed, memorization, translation and Tafseer." },
+  { title: "Quran Learning", icon: "vision", description: "Study Quran reading, Tajweed, memorization, and Quran Translation & Tafsir." },
   { title: "Individual Attention", icon: "mission", description: "One-to-one lessons let teachers focus on one student at a time." },
   { title: "Flexible Timings", icon: "values", description: "Arrange class times according to student and teacher availability." },
 ] as const;
@@ -39,7 +40,7 @@ export default function AboutIdentitySection() {
             <span className="eyebrow">Al Badar Quran Institute</span>
             <h2 id="who-we-are-title">Who We Are</h2>
             <p>Al Badar Quran Institute provides online Quranic and Islamic education for children, teenagers and adults around the world.</p>
-            <p>Students can learn Quran reading, Tajweed, memorization, translation, Tafseer and Islamic studies from the comfort of home.</p>
+            <p>Students can learn Quran reading, Tajweed, memorization, Quran Translation & Tafsir and Islamic studies from the comfort of home.</p>
           </div>
         </div>
         <div className={styles.facts}>
