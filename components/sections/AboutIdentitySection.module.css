@@ -11,22 +11,32 @@
 .fact svg { display: block; width: 2rem; height: 2rem; margin-bottom: 1rem; color: #8d6a35; }
 .fact strong { display: block; color: #3b2c20; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 400; line-height: 1.1; }
 .fact span { display: block; margin-top: .4rem; color: #75695a; font-size: .85rem; }
-.guides { background: #fcfaf6; }
-.guidesHeading { max-width: 58rem; margin: 0 auto clamp(3.5rem, 6vw, 5.5rem); text-align: center; }
-.guidesHeading h2 { max-width: none; margin: 0 0 1rem; color: #3b2c20; font-size: clamp(2.6rem, 4.8vw, 4.8rem); letter-spacing: -.05em; }
-.guidesHeading h2 em { color: #7d6028; font-weight: 400; }
-.guidesHeading p { max-width: 55ch; margin: 0 auto; color: #675f53; font-size: clamp(.95rem, 1.2vw, 1.1rem); line-height: 1.65; }
-.guideGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 5vw, 5rem); }
-.guide { text-align: center; }
-.guide svg { display: block; width: 3rem; height: 3rem; margin: 0 auto 1.6rem; color: #8d6a35; }
-.guide h3 { max-width: none; margin: 0 0 .8rem; color: #3b2c20; font-family: Arial, Helvetica, sans-serif; font-size: clamp(1.3rem, 1.8vw, 1.65rem); font-weight: 500; letter-spacing: -.025em; }
-.guide p { max-width: 35ch; margin: 0 auto; color: #716759; font-size: .95rem; line-height: 1.65; }
+.guides { padding-block: clamp(3rem, 5vw, 5rem); background: #fcfaf6; }
+.guidesPanel { position: relative; overflow: hidden; padding: clamp(2rem, 3.5vw, 3.25rem); border: 1px solid #e5d9c9; border-radius: .8rem; background: #F8F4ED; }
+.guidesPanel::after { position: absolute; top: -1rem; right: -1rem; width: 8rem; height: 8rem; background-image: repeating-linear-gradient(45deg, transparent 0 14px, #cbb992 14px 15px, transparent 15px 29px), repeating-linear-gradient(-45deg, transparent 0 14px, #cbb992 14px 15px, transparent 15px 29px); opacity: .3; mask-image: linear-gradient(225deg, #000, transparent 78%); pointer-events: none; content: ""; }
+.guidesHeading { position: relative; z-index: 1; max-width: 58rem; margin: 0 auto clamp(1.7rem, 3vw, 2.5rem); text-align: center; }
+.guidesHeading h2 { max-width: none; margin: 0 0 .7rem; color: #3b2c20; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.2rem, 3.6vw, 3.7rem); font-weight: 400; line-height: 1.08; letter-spacing: -.045em; }
+.guidesHeading h2 em { color: #96764e; font-weight: 400; }
+.guidesHeading p { max-width: 55ch; margin: 0 auto; color: #5d5144; font-size: clamp(.88rem, 1vw, 1rem); line-height: 1.5; }
+.guideGrid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.guide { min-width: 0; padding: 0 clamp(1rem, 2.5vw, 2rem); text-align: center; }
+.guide + .guide { border-left: 1px solid #d9cbb8; }
+.guideIcon { display: grid; place-items: center; width: 4rem; height: 4rem; margin: 0 auto .8rem; border-radius: 50%; background: #efe1cd; color: #4a3424; }
+.guideIcon svg { display: block; width: 2.5rem; height: 2.5rem; }
+.guide h3 { max-width: none; margin: 0 0 .5rem; color: #3b2c20; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; }
+.guide p { max-width: 31ch; margin: 0 auto; color: #5d5144; font-size: clamp(.82rem, .95vw, .95rem); line-height: 1.45; }
 @media (max-width: 760px) {
   .introGrid { grid-template-columns: 1fr; gap: 2.5rem; min-height: 0; }
   .imageWrap { width: min(100%, 28rem); }
   .introCopy h2 { max-width: none; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .guideGrid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 600px) {
+  .guidesPanel { padding: 2rem 1.4rem; }
+  .guideGrid { grid-template-columns: 1fr; }
+  .guide { padding: 1.3rem 0; }
+  .guide + .guide { border-left: 0; border-top: 1px solid #d9cbb8; }
+  .guideIcon { width: 3.7rem; height: 3.7rem; }
 }
 @media (max-width: 480px) {
   .imageWrap { aspect-ratio: 4 / 4.5; }

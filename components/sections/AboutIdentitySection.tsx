@@ -10,9 +10,9 @@ const facts = [
 ] as const;
 
 const guides = [
-  { title: "Quran Learning", icon: "vision", description: "Study Quran reading, Tajweed, memorization, and Quran Translation & Tafsir." },
-  { title: "Individual Attention", icon: "mission", description: "One-to-one lessons let teachers focus on one student at a time." },
-  { title: "Flexible Timings", icon: "values", description: "Arrange class times according to student and teacher availability." },
+  { title: "Quran Learning", icon: "book", description: "Study Quran reading, Tajweed, memorization, and Quran Translation & Tafsir." },
+  { title: "Individual Attention", icon: "teacher", description: "One-to-one lessons let teachers focus on one student at a time." },
+  { title: "Flexible Timings", icon: "clock", description: "Arrange class times according to student and teacher availability." },
 ] as const;
 
 function IdentityIcon({ kind }: { kind: string }) {
@@ -24,6 +24,8 @@ function IdentityIcon({ kind }: { kind: string }) {
     vision: <><path d="M5 24s7-11 19-11 19 11 19 11-7 11-19 11S5 24 5 24Z"/><circle cx="24" cy="24" r="5"/></>,
     mission: <><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="4"/></>,
     values: <><path d="M24 40 8 25a9 9 0 0 1 13-13l3 3 3-3a9 9 0 0 1 13 13L24 40Z"/><path d="m17 25 5 5 9-10"/></>,
+    teacher: <><circle cx="18" cy="15" r="6"/><circle cx="34" cy="19" r="4"/><path d="M6 40v-4c0-7 5-12 12-12s12 5 12 12v4H6Zm23 0h13v-3c0-5-3-9-8-9-2 0-4 .7-5 2"/></>,
+    clock: <><circle cx="24" cy="24" r="18"/><path d="M24 12v12l8 5M24 6v3m18 15h-3M24 42v-3M6 24h3"/></>,
   };
   return <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{paths[kind]}</svg>;
 }
@@ -54,16 +56,18 @@ export default function AboutIdentitySection() {
     </section>
     <section className={`section ${styles.guides}`} aria-labelledby="what-guides-title">
       <div className="container">
-        <div className={styles.guidesHeading}>
-          <h2 id="what-guides-title">Learning <em>with Al Badar</em></h2>
-          <p>Online courses are available for different ages and learning stages.</p>
-        </div>
-        <div className={styles.guideGrid}>
-          {guides.map(guide => <div className={styles.guide} key={guide.title}>
-            <IdentityIcon kind={guide.icon} />
-            <h3>{guide.title}</h3>
-            <p>{guide.description}</p>
-          </div>)}
+        <div className={styles.guidesPanel}>
+          <div className={styles.guidesHeading}>
+            <h2 id="what-guides-title">Learning <em>with Al Badar</em></h2>
+            <p>Online courses are available for different ages and learning stages.</p>
+          </div>
+          <div className={styles.guideGrid}>
+            {guides.map(guide => <div className={styles.guide} key={guide.title}>
+              <span className={styles.guideIcon}><IdentityIcon kind={guide.icon} /></span>
+              <h3>{guide.title}</h3>
+              <p>{guide.description}</p>
+            </div>)}
+          </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import AnimatedArrow from "@/components/common/AnimatedArrow";
 import { programDetails } from "@/data/programDetails";
 import { courseStories } from "@/data/courseStories";
 import { courses } from "@/data/courses";
+import CourseFocusTabs from "./CourseFocusTabs";
 import styles from "./ProgramDetailSections.module.css";
 
 export default function ProgramDetailSections({ slug, title }: { slug: string; title: string }) {
@@ -17,6 +18,14 @@ export default function ProgramDetailSections({ slug, title }: { slug: string; t
     steps: detail.learningFocus.slice(0, 4).map(focus => ({ title: focus, description: "" })),
     benefits: [...detail.learningFocus.slice(0, 4)],
   };
+  const focusImages = courses.find(course => course.href === `/courses/${slug}`)?.category === "Quran & Islamic Studies"
+    ? ["/assets/page-imagery/blog-nazira-male.webp", "/assets/gallery/student-online-lesson.webp", "/assets/page-imagery/blog-revision.webp", "/assets/page-imagery/blog-meaning.webp", "/assets/page-imagery/blog-hifz.webp", "/assets/home/images/about-child-quran-laptop.png"]
+    : ["/assets/home/images/about-child-quran-laptop.png", "/assets/page-imagery/blog-revision.webp", "/assets/gallery/student-online-lesson.webp", "/assets/gallery/student-reading-solo-boy.webp"];
+  const focusItems = detail.learningFocus.map((focus, index) => ({
+    label: story.benefits[index] ?? focus,
+    description: `${story.steps[index]?.description || `${focus}.`} ${detail.overview}`,
+    image: focusImages[index % focusImages.length],
+  }));
 
   return <>
     <section className={styles.message} aria-labelledby="program-message-title"><Container className={styles.container}>
@@ -44,9 +53,8 @@ export default function ProgramDetailSections({ slug, title }: { slug: string; t
 
     <section className={styles.explore} aria-labelledby="program-explore-title"><Container className={styles.container}>
       <p className={styles.eyebrow}>WHAT YOU CAN WORK ON</p>
-      <h2 id="program-explore-title">Why choose<br />{title}?</h2>
-      <p className={styles.exploreText}>Explore the course focus and discuss how it connects to the learner’s current level and aims.</p>
-      <ol className={styles.benefits}>{story.benefits.map((benefit, index) => <li key={`${benefit}-${index}`}><span>{String(index + 1).padStart(2, "0")}</span><p>{benefit}</p></li>)}</ol>
+      <h2 id="program-explore-title">Why choose {title}?</h2>
+      <CourseFocusTabs courseTitle={title} items={focusItems} />
     </Container></section>
   </>;
 }

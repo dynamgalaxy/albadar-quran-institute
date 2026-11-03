@@ -4,9 +4,7 @@ import AboutIdentitySection from "@/components/sections/AboutIdentitySection";
 import FounderMessageSection from "@/components/sections/FounderMessageSection";
 import AboutTeachersSection from "@/components/sections/AboutTeachersSection";
 import AboutCommunityImpactSection from "@/components/sections/AboutCommunityImpactSection";
-import AboutBranchesSection from "@/components/sections/AboutBranchesSection";
 import { pages, sectionContent } from "@/data/pages";
-import { campuses } from "@/data/campuses";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata(pages.about.seo);
@@ -20,7 +18,6 @@ export default function AboutPage() {
       <FounderMessageSection {...sectionContent.leadership} />
       <AboutTeachersSection />
       <AboutCommunityImpactSection />
-      <AboutBranchesSection campuses={campuses} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import Container from "@/components/common/Container";
 import Button from "@/components/common/Button";
+import Image from "next/image";
 import HeroSection from "@/components/sections/HeroSection";
 import FooterFAQ from "@/components/layout/FooterFAQ";
 import { createMetadata } from "@/lib/seo";
@@ -41,11 +42,21 @@ const plans = [
 ];
 
 const inclusions = [
-  { title: "One-to-one teaching", description: "Never a shared class. Your teacher focuses on one student." },
-  { title: "Flexible timings", description: "Morning, afternoon, evening or night — in your time zone." },
-  { title: "Progress updates", description: "Regular assessment, with updates shared with parents." },
-  { title: "Qualified teachers", description: "Experienced male and female teachers." },
-];
+  { title: "One-to-one teaching", description: "Never a shared class. Your teacher focuses on one student.", icon: "student" },
+  { title: "Flexible timings", description: "Morning, afternoon, evening or night — in your time zone.", icon: "calendar" },
+  { title: "Progress updates", description: "Regular assessment, with updates shared with parents.", icon: "progress" },
+  { title: "Qualified teachers", description: "Experienced male and female teachers.", icon: "teacher" },
+] as const;
+
+function PricingIcon({ kind }: { kind: (typeof inclusions)[number]["icon"] }) {
+  const paths = {
+    student: <><circle cx="16" cy="9" r="4"/><path d="M6 27v-3a10 10 0 0 1 20 0v3H6Z"/></>,
+    calendar: <><rect x="5" y="7" width="22" height="21" rx="2"/><path d="M10 4v6m12-6v6M5 14h22M11 19h2m6 0h2m-10 5h2m6 0h2"/></>,
+    progress: <><rect x="5" y="19" width="4" height="9" rx="1"/><rect x="14" y="13" width="4" height="15" rx="1"/><rect x="23" y="5" width="4" height="23" rx="1"/></>,
+    teacher: <><path d="m3 12 13-7 13 7-13 7-13-7Zm5 3v8c4 3 12 3 16 0v-8m5-3v10"/></>,
+  };
+  return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>;
+}
 
 const faqs: FAQ[] = [
   { id: "free-trial", question: "Do you offer a free trial?", answer: "Yes. Every plan starts with a free trial class, with no cost or obligation." },
@@ -81,15 +92,32 @@ export default function PricingPage() {
     </section>
 
     <section className={styles.discount} aria-labelledby="discount-title"><Container>
-      <div className={styles.discountPanel}>
-        <div><h2 id="discount-title">Family &amp; Sibling Discount</h2><p>Families with two or more students enrolled at Al Badar Quran Institute may receive a special family or sibling discount. Contact us for more details.</p></div>
-        <Button href="/contact#enquiry" variant="secondary">Ask about the discount</Button>
+      <div className={styles.familyLayout}>
+        <div className={styles.familyVisual}>
+          <div className={styles.familyImage}><Image src="/assets/home/images/hero-quran-learning.png" alt="Two children reading the Quran together" fill sizes="(max-width: 700px) 100vw, 38vw" /></div>
+        </div>
+        <div className={styles.familyCopy}>
+          <p className={styles.discountEyebrow}>Al Badar Quran Institute</p>
+          <h2 id="discount-title">Family &amp; Sibling Discount</h2>
+          <p>Families with two or more students enrolled at Al Badar Quran Institute may receive a special family or sibling discount. Contact us for more details.</p>
+          <Button href="/contact#enquiry">Ask about the discount <span aria-hidden="true">→</span></Button>
+        </div>
       </div>
     </Container></section>
 
     <section className={styles.included} aria-labelledby="included-title"><Container>
-      <h2 id="included-title">What You Always Get</h2>
-      <div className={styles.inclusionGrid}>{inclusions.map(item => <div className={styles.inclusion} key={item.title}><h3>{item.title}</h3><p>{item.description}</p></div>)}</div>
+      <div className={styles.discountLayout}>
+        <div className={styles.discountIntro}>
+          <p className={styles.discountEyebrow}>Al Badar Quran Institute</p>
+          <h2 id="included-title">What You Always Get</h2>
+          <div className={styles.discountImage}><Image src="/assets/home/images/about-child-quran-laptop.png" alt="Student reading the Quran beside a laptop" fill sizes="(max-width: 700px) 100vw, 28vw" /></div>
+        </div>
+        <div className={styles.discountGrid}>{inclusions.map(item => <article className={styles.discountCard} key={item.title}>
+          <PricingIcon kind={item.icon} />
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>)}</div>
+      </div>
     </Container></section>
 
     <FooterFAQ items={faqs} title="Fees & Enrolment FAQs" description="Answers about the free trial, monthly fees and enrolment." />
