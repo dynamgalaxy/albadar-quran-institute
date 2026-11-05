@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Container from "@/components/common/Container";
 import type { ResourceBook } from "@/data/resourceBooks";
 import styles from "./ResourceCatalog.module.css";
@@ -16,15 +19,25 @@ function DownloadIcon() {
 }
 
 export default function ResourceCatalog({ title, books }: { title: string; books: ResourceBook[] }) {
+  const [filter, setFilter] = useState<"all" | "free" | "paid">("all");
+  const visibleBooks = filter === "paid" ? [] : books;
+
   return <section className={styles.section} aria-label={`${title} downloads`}><Container>
-    <div className={styles.grid}>{books.map((book, index) => <article className={styles.card} key={book.file}>
+    <div className={styles.intro}>
+      <p className={styles.eyebrow}>Al Badar learning resources</p>
+      <h2>Books &amp; Downloads</h2>
+      <div className={styles.filters} role="group" aria-label="Filter downloads by price">
+        {(["all", "free", "paid"] as const).map(option => <button key={option} type="button" aria-pressed={filter === option} className={filter === option ? styles.active : ""} onClick={() => setFilter(option)}>{option[0].toUpperCase() + option.slice(1)}</button>)}
+      </div>
+    </div>
+    {visibleBooks.length ? <div className={styles.grid}>{visibleBooks.map((book, index) => <article className={styles.card} key={book.file}>
       <div className={styles.preview}><span className={styles.format}>PDF</span><FileIcon /></div>
       <div className={styles.meta}><span>Resource {String(index + 1).padStart(2, "0")}</span><strong>Free</strong></div>
-      <h2>{book.title}</h2>
+      <h3>{book.title}</h3>
       <p>{book.description}</p>
       <a className={styles.download} href={book.file} download aria-label={`Download ${book.title} PDF`}>
         <span>Download</span><DownloadIcon />
       </a>
-    </article>)}</div>
+    </article>)}</div> : <p className={styles.empty} role="status">No paid downloads are available.</p>}
   </Container></section>;
 }
