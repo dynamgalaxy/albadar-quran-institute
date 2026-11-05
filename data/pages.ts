@@ -8,18 +8,18 @@ export function pageHeroImage(image: string) {
   return `/assets/page-imagery/${image}-hero${updatedHeroImages.has(image) ? "-male" : ""}.webp`;
 }
 function page(title: string, path: string, description: string, image: string): PageContent {
-  return { seo: { title, path, description }, hero: { eyebrow: "Al Badar Quran Institute", title, description, backgroundImage: { src: pageHeroImage(image), alt: "" }, backButton: true, secondaryCTA: { label: "Contact Us", href: path === "/contact" ? "/contact#enquiry" : "/contact" } } };
+  return { seo: { title, path, description }, hero: { eyebrow: "Al Badar Quran Institute", title, description, backgroundImage: { src: pageHeroImage(image), alt: "" } } };
 }
 export const pages = {
   home: {
     seo: { title: "Al Badar Quran Institute", path: "/", description: "One-to-one online Quran and Islamic studies for children and adults, guided at each learner’s own pace." },
-    hero: { eyebrow: "Al Badar Quran Institute", title: "Build a lasting connection with the Quran.", description: "One-to-one online Quran and Islamic studies for children and adults, guided at each learner’s own pace.", backgroundImage: { src: "/assets/home/images/hero-quran-learning.png", alt: "" }, primaryCTA: { label: "Explore learning", href: "/courses" }, secondaryCTA: { label: "Book a free trial", href: "/contact#enquiry" }, variant: "home" as const },
+    hero: { eyebrow: "Al Badar Quran Institute", title: "Build a lasting connection with the Quran.", description: "One-to-one online Quran and Islamic studies for children and adults, guided at each learner’s own pace.", backgroundImage: { src: "/assets/home/images/hero-quran-learning.png", alt: "" }, variant: "home" as const },
   },
   about: page("About Us", "/about", "Al Badar teaches Quran and Islamic studies through one-to-one online lessons for children, teenagers and adults.", "about"),
   services: page("Services", "/services", "Explore online Quran and Islamic studies offered by Al Badar Quran Institute.", "services"),
   courses: {
     seo: { title: "Courses | Al Badar Quran Institute", path: "/courses", description: "Explore Quran and Islamic studies, science and mathematics, and language courses. Discuss a suitable starting point during a free trial." },
-    hero: { eyebrow: "Al Badar Quran Institute", title: "Explore our courses", backgroundImage: { src: pageHeroImage("courses"), alt: "Online learning" }, backButton: true, secondaryCTA: { label: "Book a free trial", href: "/contact#enquiry" } },
+    hero: { eyebrow: "Al Badar Quran Institute", title: "Explore our courses", backgroundImage: { src: pageHeroImage("courses"), alt: "Online learning" } },
   },
   blog: page("Blog", "/blog", "Articles from Al Badar Quran Institute will be published here when available.", "blog"),
   media: page("Media", "/media", "Approved Al Badar Quran Institute media will appear here when available.", "media"),
@@ -45,7 +45,7 @@ export const sectionContent = {
   featuredArticle: { title: "Featured Article" },
   media: { title: "Media Preview", description: "Approved institute media has not been provided yet." },
   featuredVideo: { title: "Featured Video" }, gallery: { title: "Media Gallery", description: "Approved institute media has not been provided yet." },
-  audio: { title: "Audio Lectures" }, photos: { title: "Photo Gallery" }, resources: { title: "Resources", description: "Learning resources have not been provided yet." },
+  audio: { title: "Audio Lectures" }, photos: { title: "Photo Gallery" }, resources: { title: "Resources", description: "Browse downloadable Quran and Islamic learning guides." },
   mission: { title: "Our Approach" }, values: { title: "Our Values", description: "Accessible learning, individual attention and flexible scheduling." },
   leadership: { title: "Our Learning Approach", description: "One-to-one Quran and Islamic studies classes with flexible timings and a free trial for new students." },
   teachers: { title: "Our Teachers", description: "Teacher names and profiles have not been provided." },

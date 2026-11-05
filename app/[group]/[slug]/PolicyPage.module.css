@@ -1,0 +1,8 @@
+.section { padding-block: clamp(3rem, 6vw, 5rem); background: #fcfaf6; }
+.content { max-width: 48rem; margin-inline: auto; }
+.notice { margin: 0 0 2rem; padding: 1rem 1.25rem; border-left: 2px solid #b18a47; background: #eee9dc; color: #554839; line-height: 1.65; }
+.entry { padding-block: 1.5rem; border-top: 1px solid #d8cbb8; }
+.entry h2 { margin: 0 0 .7rem; color: #3b2c20; font-size: clamp(1.35rem, 2vw, 1.75rem); }
+.entry p, .contact { margin: 0; color: #554839; line-height: 1.75; }
+.contact { padding-top: 1.5rem; border-top: 1px solid #d8cbb8; }
+.contact a { color: #765629; text-underline-offset: .2em; }

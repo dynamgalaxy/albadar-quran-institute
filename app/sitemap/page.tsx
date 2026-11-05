@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/common/Container";
 import PageHero from "@/components/common/PageHero";
-import { navigation, policyLinks } from "@/data/navigation";
+import { navigation, policyLinks, preservedPageLinks } from "@/data/navigation";
 import { courses } from "@/data/courses";
 import { createMetadata } from "@/lib/seo";
 
@@ -22,14 +22,13 @@ const groups = [
     { label: "Contact Us", href: "/contact" },
   ] },
   { title: "Courses", links: courses.map(course => ({ label: course.title, href: course.href ?? "/courses" })) },
-  { title: "Getting Started", links: [
-    { label: "Free Trial", href: "/academics/admission" },
-    { label: "Class Timings", href: "/academics/class-schedule" },
-  ] },
+  { title: "Getting Started", links: preservedPageLinks.filter(link => link.href.startsWith("/academics/")) },
   { title: "About", links: [
     ...(navigation.find(item => item.label === "About")?.children ?? []),
     { label: "Sitemap", href: "/sitemap" },
   ] },
+  { title: "Resources", links: navigation.find(item => item.label === "Resources")?.children ?? [] },
+  { title: "More Course Pages", links: preservedPageLinks.filter(link => link.href.startsWith("/programs/")) },
   { title: "Policies", links: policyLinks },
 ];
 

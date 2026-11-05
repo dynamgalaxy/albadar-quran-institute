@@ -1,0 +1,19 @@
+.section { padding-block: clamp(3rem, 6vw, 5rem); background: #fcfaf6; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.2rem); }
+.card { display: flex; flex-direction: column; min-width: 0; padding: 1rem; border: 1px solid #e4dbce; border-radius: .25rem; background: #f8f4ed; color: #3b2c20; transition: border-color .25s ease, box-shadow .25s ease; }
+.card:hover { border-color: #c9b38a; box-shadow: 0 8px 22px rgb(45 31 18 / .07); }
+.preview { position: relative; display: grid; place-items: center; min-height: clamp(9rem, 13vw, 12rem); border-radius: .2rem; background: #2d2218; color: #d8b96f; }
+.preview > svg { width: 2.8rem; height: 3.4rem; }
+.format { position: absolute; top: .7rem; left: .7rem; padding: .22rem .65rem; border-radius: 2rem; background: rgb(255 250 240 / .12); color: #fffaf0; font-size: .65rem; font-weight: 700; letter-spacing: .04em; }
+.meta { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.2rem; }
+.meta span { color: #9a7540; font-size: .65rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.meta strong { font-size: .95rem; font-weight: 600; }
+.card h2 { margin: .75rem 0 .5rem; color: #3b2c20; font-size: clamp(1.1rem, 1.35vw, 1.35rem); font-weight: 500; line-height: 1.2; }
+.card p { margin: 0 0 1.2rem; color: #665748; font-size: .83rem; line-height: 1.55; }
+.download { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: auto; padding-top: .85rem; border-top: 1px solid #ded8ce; color: #7d6028; font-size: .85rem; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+.download:hover { color: #3b2c20; }
+.download svg { width: 1.25rem; height: 1.25rem; transition: transform .2s ease; }
+.download:hover svg { transform: translateY(2px); }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .preview { min-height: 13rem; } }
+@media (prefers-reduced-motion: reduce) { .card, .download, .download svg { transition: none; } }

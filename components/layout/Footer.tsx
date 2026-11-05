@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/common/Container";
 import Logo from "@/components/common/Logo";
 import { site } from "@/config/site";
+import { policyLinks } from "@/data/navigation";
 
 const navigationLinks = [
   { label: "Home", href: "/" }, { label: "About Us", href: "/about" },
@@ -14,6 +15,7 @@ const quickLinks = [
   { label: "Questions & answers", href: "/faqs" },
   { label: "Contact us", href: "/contact" },
   { label: "WhatsApp", href: "https://wa.me/923155044602" },
+  ...policyLinks,
 ];
 
 const programLinks = [
